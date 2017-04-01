@@ -56,7 +56,7 @@ public class MultiTenantMongoDbFactory extends SimpleMongoDbFactory
           final String tlName = dbName.get();
           final String dbToUse = (tlName != null ? tlName : this.defaultName);
           logger.debug("Acquiring database: " + dbToUse);
-          createIndexIfNecessaryFor(dbToUse);
+          //createIndexIfNecessaryFor(dbToUse);
           return super.getDb(dbToUse);
      }
 
