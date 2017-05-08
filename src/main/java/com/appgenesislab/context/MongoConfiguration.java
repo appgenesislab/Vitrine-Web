@@ -12,11 +12,8 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.core.env.Environment;
 import org.springframework.data.mongodb.core.MongoTemplate;
 
-/**
- * Created by mariopaulo on 2017-03-13.
- */
 @SpringBootConfiguration
-public class VitrineContext
+public class MongoConfiguration
 {
 
      @Bean
