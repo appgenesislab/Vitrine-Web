@@ -23,9 +23,7 @@
           <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
           <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
           <java.version>1.8</java.version>
-          <wicket-starter-version>2.0.0</wicket-starter-version>
-          <wicket-version>8.0.0-M4</wicket-version>
-          <wicket-html-validator>1.10</wicket-html-validator>
+
      </properties>
 
      <dependencies>
@@ -52,6 +50,10 @@
           <dependency>
                <groupId>org.springframework.boot</groupId>
                <artifactId>spring-boot-starter-hateoas</artifactId>
+          </dependency>
+          <dependency>
+               <groupId>org.springframework.data</groupId>
+               <artifactId>spring-data-rest-hal-browser</artifactId>
           </dependency>
           <dependency>
                <groupId>org.springframework.boot</groupId>
@@ -91,30 +93,6 @@
           </dependency>
 
           <dependency>
-               <groupId>com.giffing.wicket.spring.boot.starter</groupId>
-               <artifactId>wicket-spring-boot-starter</artifactId>
-               <version>${wicket-starter-version}</version>
-          </dependency>
-
-          <dependency>
-               <groupId>org.wicketstuff</groupId>
-               <artifactId>wicketstuff-annotation</artifactId>
-               <version>${wicket-version}</version>
-          </dependency>
-
-          <dependency>
-               <groupId>org.apache.wicket</groupId>
-               <artifactId>wicket-bean-validation</artifactId>
-               <version>${wicket-version}</version>
-          </dependency>
-
-          <dependency>
-               <groupId>org.wicketstuff.htmlvalidator</groupId>
-               <artifactId>wicketstuff-htmlvalidator</artifactId>
-               <version>${wicket-html-validator}</version>
-          </dependency>
-
-          <dependency>
                <groupId>com.google.guava</groupId>
                <artifactId>guava</artifactId>
                <version>15.0</version>
@@ -148,9 +126,7 @@
           </plugins>
 
           <resources>
-               <resource>
-                    <directory>src/main/webapp</directory>
-               </resource>
+
                <resource>
                     <directory>src/main/resources</directory>
                </resource>
