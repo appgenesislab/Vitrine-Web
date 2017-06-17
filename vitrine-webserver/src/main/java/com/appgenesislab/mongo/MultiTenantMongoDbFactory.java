@@ -17,8 +17,10 @@ public class MultiTenantMongoDbFactory extends SimpleMongoDbFactory
 
      private MongoTemplate mongoTemplate;
 
-     private static final ThreadLocal<String> dbName = new ThreadLocal<String>();
+     private String databaseName;
+
      private static final HashMap<String, Object> databaseIndexMap = new HashMap<String, Object>();
+
 
      public MultiTenantMongoDbFactory(final Mongo mongo, final String defaultDatabaseName)
      {
@@ -28,33 +30,31 @@ public class MultiTenantMongoDbFactory extends SimpleMongoDbFactory
           this.defaultName = defaultDatabaseName;
      }
 
-     //    dirty but ... what can I do?
      public void setMongoTemplate(final MongoTemplate mongoTemplate)
      {
           Assert.isNull(this.mongoTemplate, "You can set MongoTemplate just once");
           this.mongoTemplate = mongoTemplate;
      }
 
-     public static void setDatabaseNameForCurrentThread(final String databaseName)
+     public void setDatabaseName(final String databaseName)
      {
           logger.debug("Switching to database: " + databaseName);
-          dbName.set(databaseName);
+          this.databaseName = databaseName;
      }
 
-     public static void clearDatabaseNameForCurrentThread()
+     public void clearDatabaseName()
      {
           if (logger.isDebugEnabled())
           {
-               logger.debug("Removing database [" + dbName.get() + "]");
+               logger.debug("Removing database [" + databaseName + "]");
           }
-          dbName.remove();
+          databaseName = "";
      }
 
      @Override
      public DB getDb()
      {
-          final String tlName = dbName.get();
-          final String dbToUse = (tlName != null ? tlName : this.defaultName);
+          final String dbToUse = (databaseName != null ? databaseName : this.defaultName);
           logger.debug("Acquiring database: " + dbToUse);
           //createIndexIfNecessaryFor(dbToUse);
           return super.getDb(dbToUse);

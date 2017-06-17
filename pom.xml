@@ -7,10 +7,7 @@
      <groupId>com.appgenesislab</groupId>
      <artifactId>vitrine</artifactId>
      <version>0.0.1-SNAPSHOT</version>
-     <packaging>jar</packaging>
-
-     <name>vitrine</name>
-     <description>Demo project for Spring Boot</description>
+     <packaging>pom</packaging>
 
      <parent>
           <groupId>org.springframework.boot</groupId>
@@ -19,139 +16,17 @@
           <relativePath/> <!-- lookup parent from repository -->
      </parent>
 
+     <modules>
+          <module>vitrine-core</module>
+          <module>vitrine-mci</module>
+          <module>vitrine-webserver</module>
+     </modules>
+
+     <name>vitrine</name>
+     <description>Demo project for Spring Boot</description>
+
      <properties>
-          <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-          <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
           <java.version>1.8</java.version>
-
      </properties>
-
-     <dependencies>
-          <dependency>
-               <groupId>org.springframework.boot</groupId>
-               <artifactId>spring-boot-starter-actuator</artifactId>
-          </dependency>
-          <dependency>
-               <groupId>org.springframework.boot</groupId>
-               <artifactId>spring-boot-starter-aop</artifactId>
-          </dependency>
-          <dependency>
-               <groupId>org.springframework.cloud</groupId>
-               <artifactId>spring-cloud-starter-config</artifactId>
-          </dependency>
-          <dependency>
-               <groupId>org.springframework.boot</groupId>
-               <artifactId>spring-boot-starter-data-mongodb</artifactId>
-          </dependency>
-          <dependency>
-               <groupId>org.springframework.boot</groupId>
-               <artifactId>spring-boot-starter-data-redis</artifactId>
-          </dependency>
-          <dependency>
-               <groupId>org.springframework.boot</groupId>
-               <artifactId>spring-boot-starter-hateoas</artifactId>
-          </dependency>
-          <dependency>
-               <groupId>org.springframework.data</groupId>
-               <artifactId>spring-data-rest-hal-browser</artifactId>
-          </dependency>
-          <dependency>
-               <groupId>org.springframework.boot</groupId>
-               <artifactId>spring-boot-starter-mail</artifactId>
-          </dependency>
-          <dependency>
-               <groupId>org.springframework.boot</groupId>
-               <artifactId>spring-boot-starter-security</artifactId>
-          </dependency>
-          <dependency>
-               <groupId>org.springframework.session</groupId>
-               <artifactId>spring-session</artifactId>
-          </dependency>
-          <dependency>
-               <groupId>org.springframework.boot</groupId>
-               <artifactId>spring-boot-starter-social-facebook</artifactId>
-          </dependency>
-          <dependency>
-               <groupId>org.springframework.boot</groupId>
-               <artifactId>spring-boot-starter-web</artifactId>
-          </dependency>
-
-          <dependency>
-               <groupId>org.projectlombok</groupId>
-               <artifactId>lombok</artifactId>
-               <optional>true</optional>
-          </dependency>
-          <dependency>
-               <groupId>org.springframework.boot</groupId>
-               <artifactId>spring-boot-starter-test</artifactId>
-               <scope>test</scope>
-          </dependency>
-          <dependency>
-               <groupId>de.flapdoodle.embed</groupId>
-               <artifactId>de.flapdoodle.embed.mongo</artifactId>
-               <scope>test</scope>
-          </dependency>
-
-          <dependency>
-               <groupId>com.google.guava</groupId>
-               <artifactId>guava</artifactId>
-               <version>15.0</version>
-          </dependency>
-
-          <dependency>
-               <groupId>org.assertj</groupId>
-               <artifactId>assertj-core</artifactId>
-               <version>3.6.2</version>
-          </dependency>
-     </dependencies>
-
-     <dependencyManagement>
-          <dependencies>
-               <dependency>
-                    <groupId>org.springframework.cloud</groupId>
-                    <artifactId>spring-cloud-dependencies</artifactId>
-                    <version>Dalston.RC1</version>
-                    <type>pom</type>
-                    <scope>import</scope>
-               </dependency>
-          </dependencies>
-     </dependencyManagement>
-
-     <build>
-          <plugins>
-               <plugin>
-                    <groupId>org.springframework.boot</groupId>
-                    <artifactId>spring-boot-maven-plugin</artifactId>
-               </plugin>
-          </plugins>
-
-          <resources>
-
-               <resource>
-                    <directory>src/main/resources</directory>
-               </resource>
-               <resource>
-                    <directory>src/main/java</directory>
-                    <includes>
-                         <include>**</include>
-                    </includes>
-                    <excludes>
-                         <exclude>**/*.java</exclude>
-                    </excludes>
-               </resource>
-          </resources>
-     </build>
-
-     <repositories>
-          <repository>
-               <id>spring-milestones</id>
-               <name>Spring Milestones</name>
-               <url>https://repo.spring.io/milestone</url>
-               <snapshots>
-                    <enabled>false</enabled>
-               </snapshots>
-          </repository>
-     </repositories>
-
 
 </project>

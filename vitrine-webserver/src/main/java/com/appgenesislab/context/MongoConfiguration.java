@@ -30,7 +30,8 @@ public class MongoConfiguration
 
           MongoClient mongoClient = new MongoClient(
               Arrays.asList(new ServerAddress(node1), new ServerAddress(node2),
-                  new ServerAddress(node3)), Arrays.asList(credentials,credentials,credentials),optionsBuilder.build());
+                  new ServerAddress(node3)), Arrays.asList(credentials, credentials, credentials),
+              optionsBuilder.build());
 
           return mongoClient;
      }
@@ -46,7 +47,7 @@ public class MongoConfiguration
      {
           MultiTenantMongoDbFactory mongoDbFactory = new MultiTenantMongoDbFactory(mongo,
               "tenant1");
-          MultiTenantMongoDbFactory.setDatabaseNameForCurrentThread("tenant2");
+          mongoDbFactory.setDatabaseName("tenant2");
           return mongoDbFactory;
      }
 
