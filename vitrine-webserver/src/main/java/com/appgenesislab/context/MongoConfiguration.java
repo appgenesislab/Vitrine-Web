@@ -4,34 +4,29 @@ import com.appgenesislab.mongo.MultiTenantMongoDbFactory;
 import com.mongodb.Mongo;
 import com.mongodb.MongoClient;
 import com.mongodb.MongoClientOptions;
+import com.mongodb.MongoClientURI;
 import com.mongodb.MongoCredential;
 import com.mongodb.ServerAddress;
 import java.util.Arrays;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.boot.SpringBootConfiguration;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.core.env.Environment;
 import org.springframework.data.mongodb.core.MongoTemplate;
 
-@SpringBootConfiguration
+@Configuration
 public class MongoConfiguration
 {
+     private static final Logger logger = LoggerFactory.getLogger(MongoConfiguration.class);
 
      @Bean
      public Mongo mongo(Environment environment, MongoClientOptions.Builder optionsBuilder)
      {
-          String node1 = environment.getProperty("mongo.replicaset.node1.host");
-          String node2 = environment.getProperty("mongo.replicaset.node2.host");
-          String node3 = environment.getProperty("mongo.replicaset.node3.host");
-
-          String password = environment.getProperty("mongo.password");
-
-          MongoCredential credentials = MongoCredential
-              .createCredential("admin", "admin", password.toCharArray());
-
-          MongoClient mongoClient = new MongoClient(
-              Arrays.asList(new ServerAddress(node1), new ServerAddress(node2),
-                  new ServerAddress(node3)), Arrays.asList(credentials, credentials, credentials),
-              optionsBuilder.build());
+          logger.info("Creating customized Mongo Bean");
+          String uri = environment.getProperty("mongo.uri");
+          MongoClient mongoClient = new MongoClient(new MongoClientURI(uri,optionsBuilder));
 
           return mongoClient;
      }
@@ -39,12 +34,14 @@ public class MongoConfiguration
      @Bean
      public MongoTemplate mongoTemplate(final Mongo mongo) throws Exception
      {
+          logger.info("Creating MultiTenant mongoTemplate bean");
           return new MongoTemplate(mongoDbFactory(mongo));
      }
 
      @Bean
      public MultiTenantMongoDbFactory mongoDbFactory(final Mongo mongo) throws Exception
      {
+          logger.info("Creating MultiTenantMongoDbFactory bean");
           MultiTenantMongoDbFactory mongoDbFactory = new MultiTenantMongoDbFactory(mongo,
               "tenant1");
           mongoDbFactory.setDatabaseName("tenant2");
@@ -55,6 +52,7 @@ public class MongoConfiguration
      public MongoClientOptions.Builder mongoClientOption()
      {
 
+          logger.info("Creating  MultiTenant mongoClientOption bean");
           MongoClientOptions.Builder optionsBuilder = new MongoClientOptions.Builder();
 
           optionsBuilder.socketTimeout(60000);
