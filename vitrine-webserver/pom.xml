@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+
+     <modelVersion>4.0.0</modelVersion>
+
+     <artifactId>vitrine-webserver</artifactId>
+
+     <parent>
+          <groupId>com.appgenesislab</groupId>
+          <artifactId>vitrine</artifactId>
+          <version>0.0.1-SNAPSHOT</version>
+     </parent>
+
+     <properties>
+          <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+          <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+          <java.version>1.8</java.version>
+     </properties>
+
+     <dependencies>
+
+          <dependency>
+               <groupId>com.appgenesislab</groupId>
+               <artifactId>vitrine-core</artifactId>
+               <version>${project.version}</version>
+          </dependency>
+          <dependency>
+               <groupId>com.appgenesislab</groupId>
+               <artifactId>vitrine-mci</artifactId>
+               <version>${project.version}</version>
+          </dependency>
+
+          <dependency>
+               <groupId>org.springframework.boot</groupId>
+               <artifactId>spring-boot-starter-data-redis</artifactId>
+          </dependency>
+          <dependency>
+               <groupId>org.springframework.boot</groupId>
+               <artifactId>spring-boot-starter-hateoas</artifactId>
+          </dependency>
+          <dependency>
+               <groupId>org.springframework.data</groupId>
+               <artifactId>spring-data-rest-hal-browser</artifactId>
+          </dependency>
+          <dependency>
+               <groupId>org.springframework.boot</groupId>
+               <artifactId>spring-boot-starter-mail</artifactId>
+          </dependency>
+          <dependency>
+               <groupId>org.springframework.boot</groupId>
+               <artifactId>spring-boot-starter-security</artifactId>
+          </dependency>
+          <dependency>
+               <groupId>org.springframework.session</groupId>
+               <artifactId>spring-session</artifactId>
+          </dependency>
+          <dependency>
+               <groupId>org.springframework.boot</groupId>
+               <artifactId>spring-boot-starter-social-facebook</artifactId>
+          </dependency>
+          <dependency>
+               <groupId>org.springframework.boot</groupId>
+               <artifactId>spring-boot-starter-web</artifactId>
+          </dependency>
+
+          <dependency>
+               <groupId>biz.paluch.redis</groupId>
+               <artifactId>lettuce</artifactId>
+               <version>4.3.2.Final</version>
+          </dependency>
+     </dependencies>
+
+
+
+     <build>
+          <plugins>
+               <plugin>
+                    <groupId>org.springframework.boot</groupId>
+                    <artifactId>spring-boot-maven-plugin</artifactId>
+               </plugin>
+          </plugins>
+
+     </build>
+
+
+</project>
