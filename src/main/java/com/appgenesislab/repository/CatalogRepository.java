@@ -9,4 +9,5 @@ public interface CatalogRepository extends MongoRepository<Catalog, String> {
 
      @Query(value="{ 'products.name' : ?0 }", fields="{ 'name' : 1, 'products.name' : 1}")
      List<Catalog> findByProductName(String name);
+
 }

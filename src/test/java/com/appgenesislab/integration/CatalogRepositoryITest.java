@@ -16,6 +16,7 @@ import org.junit.experimental.theories.Theories;
 import org.junit.experimental.theories.Theory;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.data.mongo.DataMongoTest;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.context.annotation.Import;
 import org.springframework.data.domain.Example;
@@ -23,7 +24,7 @@ import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.test.context.TestContextManager;
 
 @RunWith(Theories.class)
-@SpringBootTest
+@DataMongoTest
 public class CatalogRepositoryITest
 {
 
@@ -51,13 +52,11 @@ public class CatalogRepositoryITest
      @Theory
      public void shouldInsertCatalogsWithEmbeddedDocuments(final Integer quantityProducts)
      {
-
           Catalog catalog = givenCatalog(quantityProducts);
 
           catalog = catalogRepository.save(catalog);
 
           assertThat(catalog.getProducts().size()).isEqualTo(quantityProducts);
-
      }
 
      @Test
@@ -78,7 +77,6 @@ public class CatalogRepositoryITest
 
           assertThat(catalogRepository.findByProductName("Shirt 2")).isNotEmpty();
      }
-
 
      public Catalog givenCatalog(final Integer quantityProducts)
      {
