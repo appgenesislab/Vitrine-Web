@@ -1,0 +1,6 @@
+rootProject.name = 'vitrine'
+include ':vitrine-core'
+include ':vitrine-mci'
+include ':vitrine-webserver'
+include ':vitrine-frontend'
+
