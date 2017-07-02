@@ -1,6 +1,18 @@
 target/
 !.mvn/wrapper/maven-wrapper.jar
 
+vitrine-frontend/dist
+
+vitrine-core/build/
+
+vitrine-mci/build/
+
+vitrine-webserver/build/
+
+vitrine-webserver/src/main/resources/static/
+
+.gradle/
+
 ### STS ###
 .apt_generated
 .classpath
