@@ -6,8 +6,8 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
 
 @Configuration
-@ConditionalOnProperty(prefix = MultitenantSolutionProperties.PREFIX, name = MultitenantSolutionProperties.PROP_NAME, havingValue = MultitenantSolutionProperties.PROP_MATCHING_VALUE, matchIfMissing = true)
 @EnableConfigurationProperties(MultitenantSolutionProperties.class)
+@ConditionalOnProperty(prefix = MultitenantSolutionProperties.PREFIX, name = MultitenantSolutionProperties.PROP_NAME, havingValue = MultitenantSolutionProperties.PROP_MATCHING_VALUE, matchIfMissing = true)
 @Import(MongoMultitenantDBSource.class)
 public class MultitenantSolutionContext
 {

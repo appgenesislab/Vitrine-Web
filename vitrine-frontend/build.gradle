@@ -5,9 +5,9 @@ plugins {
 version = '0.0.1-SNAPSHOT'
 
 node {
-    version = '6.10.3'
+    version = '6.11.0'
     npmVersion = '4.6.1'
-    download = false
+    download = true
     workDir = file("${project.buildDir}/node")
     nodeModulesDir = file("${project.projectDir}")
 }
@@ -19,4 +19,5 @@ task buildFront(type: NpmTask) {
 }
 
 buildFront.dependsOn(npm_install)
+
 bootRun.dependsOn(buildFront)
