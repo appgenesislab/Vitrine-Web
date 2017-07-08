@@ -10,7 +10,11 @@ buildscript {
     }
 }
 
-configure(subprojects - project(':vitrine-frontend')){
+plugins {
+    id "io.spring.dependency-management" version "1.0.3.RELEASE"
+}
+
+configure(allprojects - project(':vitrine-frontend')){
 
     apply plugin: 'java'
     apply plugin: 'idea'
@@ -29,11 +33,7 @@ configure(subprojects - project(':vitrine-frontend')){
         maven { url "https://repo.spring.io/milestone" }
         maven { url "http://repo.maven.apache.org/maven2" }
     }
-}
 
-project(':vitrine-core') {
-
-    description = 'Vitrine Multitenant Common Interface'
     dependencies {
         compile group: 'org.springframework.boot', name: 'spring-boot-starter-actuator', version: '1.5.2.RELEASE'
         compile group: 'org.springframework.boot', name: 'spring-boot-starter-aop', version: '1.5.2.RELEASE'
@@ -47,6 +47,13 @@ project(':vitrine-core') {
         }
         testCompile group: 'de.flapdoodle.embed', name: 'de.flapdoodle.embed.mongo', version: '1.50.5'
     }
+
+}
+
+project(':vitrine-core') {
+
+    description = 'Vitrine Core library'
+
 }
 
 project(':vitrine-mci') {
@@ -66,9 +73,6 @@ project(':vitrine-webserver') {
         compile project(path: ':vitrine-core')
         compile project(path: ':vitrine-mci')
         compile group: 'org.springframework.boot', name: 'spring-boot-starter-data-redis', version: '1.5.2.RELEASE'
-        compile group: 'org.springframework.boot', name: 'spring-boot-starter-hateoas', version: '1.5.2.RELEASE'
-        compile group: 'org.springframework.data', name: 'spring-data-rest-hal-browser', version: '2.6.1.RELEASE'
-        compile group: 'org.springframework.boot', name: 'spring-boot-starter-mail', version: '1.5.2.RELEASE'
         compile group: 'org.springframework.boot', name: 'spring-boot-starter-security', version: '1.5.2.RELEASE'
         compile(group: 'org.springframework.session', name: 'spring-session', version: '1.3.0.RELEASE') {
             exclude(module: 'commons-logging')

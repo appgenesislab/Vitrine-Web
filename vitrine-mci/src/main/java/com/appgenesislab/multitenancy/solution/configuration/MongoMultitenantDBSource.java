@@ -6,6 +6,7 @@ import java.net.UnknownHostException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.mongodb.MongoDbFactory;
@@ -13,13 +14,18 @@ import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.SimpleMongoDbFactory;
 
 @Configuration
+@EnableConfigurationProperties(MultitenantSolutionProperties.class)
 public class MongoMultitenantDBSource
 {
 
      private static final Logger logger = LoggerFactory.getLogger(MongoMultitenantDBSource.class);
 
-     @Autowired
      private MultitenantSolutionProperties properties;
+
+     @Autowired
+     public MongoMultitenantDBSource(MultitenantSolutionProperties properties) {
+          this.properties=properties;
+     }
 
      @Bean
      public MongoDbFactory mongoDbFactory() throws UnknownHostException
